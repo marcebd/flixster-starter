@@ -5,7 +5,9 @@ const MovieCardsContainer = ({ searchQuery, sortOption }) => {
   const [allMovies, setAllMovies] = useState([]);
   const [displayMovies, setDisplayMovies] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 20; // Number of items you want per page
+  const [favorites, setFavorites] = useState(new Set()); // State for favorited movies
+  const [watched, setWatched] = useState(new Set()); // State for watched movies
+  const itemsPerPage = 20; // Number of items per page
 
   useEffect(() => {
     const fetchAllMovies = async () => {
@@ -44,6 +46,30 @@ const MovieCardsContainer = ({ searchQuery, sortOption }) => {
     return movies;
   };
 
+  const toggleFavorite = (movieId) => {
+    setFavorites(prev => {
+      const newFavorites = new Set(prev);
+      if (newFavorites.has(movieId)) {
+        newFavorites.delete(movieId);
+      } else {
+        newFavorites.add(movieId);
+      }
+      return new Set(newFavorites);
+    });
+  };
+
+  const toggleWatched = (movieId) => {
+    setWatched(prev => {
+      const newWatched = new Set(prev);
+      if (newWatched.has(movieId)) {
+        newWatched.delete(movieId);
+      } else {
+        newWatched.add(movieId);
+      }
+      return new Set(newWatched);
+    });
+  };
+
   const handleLoadMore = () => {
     const nextPage = currentPage + 1;
     setCurrentPage(nextPage);
@@ -54,7 +80,14 @@ const MovieCardsContainer = ({ searchQuery, sortOption }) => {
   return (
     <div className="MovieCardsContainer">
       {displayMovies.map(movie => (
-        <MovieCard key={movie.id} movie={movie} />
+        <MovieCard
+          key={movie.id}
+          movie={movie}
+          isFavorite={favorites.has(movie.id)}
+          isWatched={watched.has(movie.id)}
+          onToggleFavorite={() => toggleFavorite(movie.id)}
+          onToggleWatched={() => toggleWatched(movie.id)}
+        />
       ))}
       <button onClick={handleLoadMore}>Load More</button>
     </div>
