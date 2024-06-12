@@ -17,3 +17,18 @@ button:hover {
   background-color: #777;
   color: white;
 }
+
+header {
+  border-style: dotted;
+  border-color: black;
+}
+
+.movieContainer {
+  border-style: dotted;
+  border-color: black;
+}
+
+.movieCard {
+  border-style: dotted;
+  border-color: black;
+}

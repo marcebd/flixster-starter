@@ -26,3 +26,13 @@
     flex-direction: column;
   }
 }
+
+.Header {
+  border-style: dashed;
+  border-color: black;
+}
+
+.MovieCard {
+  border-style: dashed;
+  border-color: black;
+}
