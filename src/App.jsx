@@ -14,7 +14,6 @@ const App = () => {
       <Sort/>
       <Filter/>
       <MovieCardsContainer/>
-      <LoadMoreButton/>
     </div>
   )
 }
