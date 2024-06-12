@@ -1,21 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-function DropdownMenu() {
-  // State to keep track of the selected option
+function DropdownMenu({ onSortChange }) {
   const [selectedOption, setSelectedOption] = useState('');
 
-  // Function to handle when an option is selected
   const handleSelectChange = (event) => {
     setSelectedOption(event.target.value);
+    onSortChange(event.target.value); // Pass the selected option back to the parent
   };
 
   return (
     <div>
       <select value={selectedOption} onChange={handleSelectChange}>
-        <option value="" className='DropDownSelect'>Select</option>
-        <option value="alphabetical" className='DropDownOptions'>Alphabetical</option>
-        <option value="release-date" className='DropDownOptions'>Release Date</option>
-        <option value="rating" className='DropDownOptions'>Rating</option>
+        <option value="">Select</option>
+        <option value="alphabetical">Alphabetical</option>
+        <option value="release-date">Release Date</option>
+        <option value="rating">Rating</option>
       </select>
     </div>
   );
