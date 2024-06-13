@@ -8,6 +8,9 @@ const MovieCard = ({ movie, isFavorite, isWatched, onToggleFavorite, onToggleWat
     <div className="MovieCard">
       <h3>{movie.title}</h3>
       <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title} />
+      <div>
+        <strong>Rating: </strong>{movie.vote_average} / 10
+      </div>
       <button onClick={onToggleFavorite} style={{ color: isFavorite ? 'red' : 'grey', border: 'none', background: 'transparent' }}>
         <FontAwesomeIcon icon={isFavorite ? fasHeart : farHeart} size="lg" />
       </button>

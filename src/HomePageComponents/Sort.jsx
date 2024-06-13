@@ -4,8 +4,9 @@ function DropdownMenu({ onSortChange }) {
   const [selectedOption, setSelectedOption] = useState('');
 
   const handleSelectChange = (event) => {
-    setSelectedOption(event.target.value);
-    onSortChange(event.target.value); // Pass the selected option back to the parent
+    const newSortOption = event.target.value;
+    setSelectedOption(newSortOption);
+    onSortChange(newSortOption); // Notify the parent component of the change
   };
 
   return (
