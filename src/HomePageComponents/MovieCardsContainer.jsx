@@ -44,7 +44,7 @@ const MovieCardsContainer = ({ searchQuery }) => {
     }
 
     if (searchQuery) {
-        url += `&query=${encodeURIComponent(searchQuery)}`;
+      url = `${baseUrl}/search/movie?query=${encodeURIComponent(searchQuery)}&page=${page}&api_key=${apiKey}`;
     }
 
     console.log("Fetching movies with URL:", url);
