@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import Header from './HomePageComponents/Header';
 import MovieCardsContainer from './HomePageComponents/MovieCardsContainer';
-import DropdownMenu from './HomePageComponents/Sort';
 
 const App = () => {
   const [page, setPage] = useState(1);
@@ -15,9 +14,6 @@ const App = () => {
     setPage(1);
   };
 
-  const handleSortChange = (option) => {
-    setSortOption(option);
-  };
 
   return (
     <div className="App">
