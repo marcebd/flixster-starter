@@ -4,25 +4,27 @@ const Filter = ({ onFilterChange }) => {
   const [favorited, setFavorited] = useState(false);
   const [watched, setWatched] = useState(false);
 
-  const handleFilterUpdate = () => {
+  useEffect(() => {
     onFilterChange({ favorited, watched });
-  };
+  }, [favorited, watched, onFilterChange]);
 
   return (
     <div>
       <label>
-        <input type="checkbox" checked={favorited} onChange={(e) => {
-          setFavorited(e.target.checked);
-          handleFilterUpdate();
-        }} />
-        Watched
+        <input
+          type="checkbox"
+          checked={favorited}
+          onChange={(e) => setFavorited(e.target.checked)}
+        />
+        Favorites
       </label>
       <label>
-        <input type="checkbox" checked={watched} onChange={(e) => {
-          setWatched(e.target.checked);
-          handleFilterUpdate();
-        }} />
-        Favorite
+        <input
+          type="checkbox"
+          checked={watched}
+          onChange={(e) => setWatched(e.target.checked)}
+        />
+        Watched
       </label>
     </div>
   );

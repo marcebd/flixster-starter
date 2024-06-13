@@ -13,9 +13,22 @@ const MovieCardsContainer = ({ searchQuery }) => {
   const [sortOption, setSortOption] = useState('');
   const itemsPerPage = 20;
 
+  const updateDisplayMovies = useCallback((movies) => {
+    let filteredMovies = movies.filter(movie =>
+        (!filterSettings.favorited || favorites.has(movie.id)) &&
+        (!filterSettings.watched || watched.has(movie.id))
+    );
+    console.log("Filtered movies after applying filters:", filteredMovies);
+    setDisplayMovies(filteredMovies.slice(0, currentPage * itemsPerPage));
+  }, [favorites, watched, filterSettings, currentPage]);
+
   useEffect(() => {
     fetchMovies(1);
   }, [searchQuery, sortOption]);
+
+  useEffect(() => {
+    updateDisplayMovies(allMovies);
+  }, [filterSettings, allMovies, updateDisplayMovies]);
 
   const fetchMovies = useCallback(async (page) => {
     const apiKey = import.meta.env.VITE_API_KEY;
@@ -34,38 +47,23 @@ const MovieCardsContainer = ({ searchQuery }) => {
         url += `&query=${encodeURIComponent(searchQuery)}`;
     }
 
-    // Debugging output to check the final URL
     console.log("Fetching movies with URL:", url);
 
     try {
         const response = await fetch(url);
         const data = await response.json();
-
-        // Debugging output to check the data returned from the API
         console.log("API response data:", data);
-
         setAllMovies(data.results);
         updateDisplayMovies(data.results);
     } catch (error) {
         console.error("Failed to fetch movies:", error);
     }
-}, [searchQuery, sortOption]);
-
-const updateDisplayMovies = useCallback((movies) => {
-  let filteredMovies = movies.filter(movie =>
-      (!filterSettings.favorited || favorites.has(movie.id)) &&
-      (!filterSettings.watched || watched.has(movie.id))
-  );
-
-  console.log("Filtered movies:", filteredMovies); // Debugging output
-
-  setDisplayMovies(filteredMovies.slice(0, currentPage * itemsPerPage));
-}, [favorites, watched, filterSettings, currentPage]);
+  }, [searchQuery, sortOption, updateDisplayMovies]);
 
   const handleFilterChange = useCallback((settings) => {
+    console.log("Filter settings updated to:", settings);
     setFilterSettings(settings);
-    updateDisplayMovies(allMovies);
-  }, [allMovies, updateDisplayMovies]);
+  }, []);
 
   const toggleSet = useCallback((setId, movieId) => {
     setId(prev => {
@@ -75,9 +73,11 @@ const updateDisplayMovies = useCallback((movies) => {
       } else {
         newSet.add(movieId);
       }
+      console.log(`Toggled ${setId === setFavorites ? 'favorite' : 'watched'} for movie ID: ${movieId}`);
       return new Set(newSet);
     });
-  }, []);
+    updateDisplayMovies(allMovies);
+  }, [allMovies, updateDisplayMovies]);
 
   const handleLoadMore = useCallback(() => {
     const nextPage = currentPage + 1;
