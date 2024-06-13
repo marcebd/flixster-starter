@@ -22,7 +22,7 @@ const App = () => {
   return (
     <div className="App">
       <Header onSearch={handleSearch} />
-      <MovieCardsContainer page={page} searchQuery={searchQuery} sortOption={sortOption} />
+        <MovieCardsContainer page={page} searchQuery={searchQuery} sortOption={sortOption} />
     </div>
   );
 }

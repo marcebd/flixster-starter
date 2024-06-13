@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import MovieCard from './MovieCard';
 import Filter from './Filter';
 import DropdownMenu from './Sort';
+import Modal from './Modal';
 
 const MovieCardsContainer = ({ searchQuery }) => {
   const [allMovies, setAllMovies] = useState([]);
@@ -12,6 +13,16 @@ const MovieCardsContainer = ({ searchQuery }) => {
   const [filterSettings, setFilterSettings] = useState({ favorited: false, watched: false });
   const [sortOption, setSortOption] = useState('');
   const itemsPerPage = 20;
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = (movie) => {
+    setSelectedMovie(movie);
+    setIsModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedMovie(null);
+  };
 
   const updateDisplayMovies = useCallback((movies) => {
     let filteredMovies = movies.filter(movie =>
@@ -98,6 +109,7 @@ const MovieCardsContainer = ({ searchQuery }) => {
         <MovieCard
           key={movie.id}
           movie={movie}
+          onClick={() => openModal(movie)}
           isFavorite={favorites.has(movie.id)}
           isWatched={watched.has(movie.id)}
           onToggleFavorite={() => toggleSet(setFavorites, movie.id)}
@@ -105,6 +117,7 @@ const MovieCardsContainer = ({ searchQuery }) => {
         />
       ))}
       <button onClick={handleLoadMore}>Load More</button>
+      <Modal movie={selectedMovie} isOpen={isModalOpen} onClose={closeModal} />
     </div>
   );
 }
