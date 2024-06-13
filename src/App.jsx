@@ -1,5 +1,5 @@
+import './App.css'
 import React, { useState } from 'react';
-
 import Header from './HomePageComponents/Header';
 import MovieCardsContainer from './HomePageComponents/MovieCardsContainer';
 

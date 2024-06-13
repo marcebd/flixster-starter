@@ -64,7 +64,11 @@ const MovieCardsContainer = ({ searchQuery }) => {
         const response = await fetch(url);
         const data = await response.json();
         console.log("API response data:", data);
-        setAllMovies(data.results);
+        if(page !== 1) {
+            setAllMovies(prev => [...prev, ...data.results]);
+        } else {
+            setAllMovies(data.results);
+        }
         updateDisplayMovies(data.results);
     } catch (error) {
         console.error("Failed to fetch movies:", error);
@@ -105,17 +109,19 @@ const MovieCardsContainer = ({ searchQuery }) => {
     <div className="MovieCardsContainer">
       <DropdownMenu onSortChange={handleSortChange} />
       <Filter onFilterChange={handleFilterChange} />
-      {displayMovies.map(movie => (
-        <MovieCard
-          key={movie.id}
-          movie={movie}
-          onClick={() => openModal(movie)}
-          isFavorite={favorites.has(movie.id)}
-          isWatched={watched.has(movie.id)}
-          onToggleFavorite={() => toggleSet(setFavorites, movie.id)}
-          onToggleWatched={() => toggleSet(setWatched, movie.id)}
-        />
-      ))}
+      <div className='MovieList'>
+        {displayMovies.map(movie => (
+          <MovieCard
+            key={movie.id}
+            movie={movie}
+            onClick={() => openModal(movie)}
+            isFavorite={favorites.has(movie.id)}
+            isWatched={watched.has(movie.id)}
+            onToggleFavorite={() => toggleSet(setFavorites, movie.id)}
+            onToggleWatched={() => toggleSet(setWatched, movie.id)}
+          />
+        ))}
+      </div>
       <button onClick={handleLoadMore}>Load More</button>
       <Modal movie={selectedMovie} isOpen={isModalOpen} onClose={closeModal} />
     </div>
