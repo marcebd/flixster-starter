@@ -1,0 +1,27 @@
+/* Styles for the .Filters container */
+.Filters {
+    display: flex; /* Establishes a flexbox layout, making child elements (flex items) align in a row by default */
+    flex-wrap: wrap; /* Allows flex items to wrap onto multiple lines if there isn't enough space in a single row */
+    gap: 20px; /* Sets both the row and column gaps between flex items to 20px */
+    align-items: center; /* Vertically centers all flex items in their flex container */
+    justify-content: space-evenly; /* Distributes space evenly between and around flex items along the main axis */
+}
+
+/* Styles for each label inside the .Filters container */
+.Filters label {
+    display: flex; /* Establishes a flexbox layout for contents inside the label, aligning them in a row */
+    align-items: center; /* Vertically centers the contents (e.g., checkbox and text) of the label */
+    gap: 10px; /* Sets the space between the immediate children (e.g., checkbox and text) of the label */
+}
+
+/* Styles for the .genresFilters container, which might contain multiple genre labels */
+.genresFilters {
+    display: flex; /* Establishes a flexbox layout, making child elements align in a row */
+    flex-wrap: wrap; /* Allows child elements to wrap onto multiple lines if there isn't enough space in a single row */
+    gap: 15px; /* Sets both the row and column gaps between child elements to 15px */
+}
+
+/* Styles for elements with the class .filterName, typically used for labeling filters */
+.filterName {
+    font-size: 20px; /* Sets the font size of the filter name text to 20px */
+}

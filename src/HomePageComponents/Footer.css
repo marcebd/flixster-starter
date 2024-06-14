@@ -1,0 +1,23 @@
+/* Styles for the footer element */
+.footer {
+    width: 100%; /* Set the footer width to span the entire width of its container */
+    padding: 20px 0; /* Apply vertical padding of 20px and no horizontal padding */
+    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet); /* Create a linear gradient background with rainbow colors */
+    background-size: 1400% 1400%; /* Enlarge the background size to allow for a dynamic moving effect */
+    animation: rainbowAnimation 3s linear infinite; /* Apply the 'rainbowAnimation' keyframes animation */
+    text-align: center; /* Center-align the text within the footer */
+}
+
+/* Define keyframes for the 'rainbowAnimation' to create a moving rainbow effect */
+@keyframes rainbowAnimation {
+    0% { background-position: 0% 50%; } /* Start the background position at the left */
+    50% { background-position: 100% 50%; } /* Move the background to the right */
+    100% { background-position: 0% 50%; } /* Return the background to the starting position */
+}
+
+/* Styles for the text inside the footer */
+.footerText {
+    font-size: 24px; /* Set the font size to 24px for visibility */
+    color: white; /* Set the text color to white for contrast against the rainbow background */
+    text-shadow: 1px 1px 2px black; /* Apply a black shadow to the text to enhance readability */
+}

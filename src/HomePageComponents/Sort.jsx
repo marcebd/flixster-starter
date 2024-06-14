@@ -1,3 +1,4 @@
+import './MovieCardsContainer.css'
 import React, { useState, useEffect } from 'react';
 
 function DropdownMenu({ onSortChange }) {
@@ -6,11 +7,11 @@ function DropdownMenu({ onSortChange }) {
   const handleSelectChange = (event) => {
     const newSortOption = event.target.value;
     setSelectedOption(newSortOption);
-    onSortChange(newSortOption); // Notify the parent component of the change
+    onSortChange(newSortOption);
   };
 
   return (
-    <div>
+    <div className='SortButton'>
       <select value={selectedOption} onChange={handleSelectChange}>
         <option value="">Select</option>
         <option value="alphabetical">Alphabetical</option>

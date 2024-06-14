@@ -1,0 +1,87 @@
+.MovieCard {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.6); /* Neon blue shadow */
+    margin: 20px;
+    width: 350px; /* Adjust width as needed */
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transition for shadow and scale */
+    cursor: pointer; /* Change cursor on hover */
+}
+
+.movieCardOverview {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-evenly;
+}
+
+.MovieCard:hover {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8); /* Larger neon blue shadow on hover */
+    transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+.MovieCard__header {
+    display: block; /* Change from flex to block to stack elements vertically */
+    text-align: center; /* Center-align the content */
+}
+
+.movieCardPoster {
+    width: 100%; /* Make the poster full width */
+    height: auto;
+    border-radius: 4px 4px 0 0; /* Round only the top corners */
+}
+
+.Movie-Title {
+    font-size: 20px; /* Increased font size */
+    color: #333;
+    margin: 10px 0; /* Add vertical margin */
+}
+
+.movieCardFavoriteHeart, .movieCardWatchedLabel, .movieCardRating {
+    display: block; /* Make each element a block to stack vertically */
+    text-align: center; /* Center-align the text */
+    margin: 5px 0; /* Add some vertical spacing */
+}
+
+.movieCardFavoriteHeart {
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.movieCardWatchedLabel {
+    cursor: pointer;
+    width: 100px;
+    height: 50px;
+    display: flex;
+    align-items: center
+}
+
+.rating {
+    display: flex;
+    align-items: center
+}
+
+.movieCardRating {
+    color: #666;
+    font-size: 16px;
+    display: inline-block;
+}
+
+.movieCardWatchedButton {
+    transform: scale(1.5); /* Scale up the size of the checkbox */
+    cursor: pointer; /* Change the cursor to pointer to indicate it's clickable */
+    margin-right: 10px; /* Maintain some space between the checkbox and the label text */
+}
+
+.movieCardWatchedLabel {
+    display: flex;
+    align-items: center; /* Center align the checkbox with the label text */
+    cursor: pointer;
+}
+
+/* Optional: Adjust the font size and padding of the label for better alignment and visibility */
+.movieCardWatchedLabel {
+    font-size: 18px; /* Increase font size if needed */
+    padding: 10px; /* Add padding for better spacing */
+}

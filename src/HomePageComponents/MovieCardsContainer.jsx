@@ -1,3 +1,4 @@
+import './MovieCardsContainer.css'
 import React, { useState, useEffect, useCallback } from 'react';
 import MovieCard from './MovieCard';
 import Filter from './Filter';
@@ -130,8 +131,10 @@ const MovieCardsContainer = ({ searchQuery }) => {
 
   return (
     <div className="MovieCardsContainer">
-      <DropdownMenu onSortChange={handleSortChange} />
-      <Filter onFilterChange={handleFilterChange} />
+      <div className='SortFilter'>
+        <DropdownMenu onSortChange={handleSortChange} className='SortButton' />
+        <Filter onFilterChange={handleFilterChange} className='Filters'/>
+      </div>
       <div className='MovieList'>
         {displayMovies.map(movie => (
           <MovieCard

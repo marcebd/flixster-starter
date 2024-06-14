@@ -1,3 +1,4 @@
+import './Modal.css'
 import React, { useEffect, useState } from 'react';
 import { getGenreNames } from './GetGenredNames';
 
@@ -43,10 +44,11 @@ const Modal = ({ movie, isOpen, onClose }) => {
                     <h2>{movie?.release_date}</h2>
                     <h2>Genres: {genreNames.join(', ')}</h2>
                     {runtime && <p>Runtime: {runtime} minutes</p>}
-                    <img src={`https://image.tmdb.org/t/p/w500${movie?.backdrop_path}`} alt={movie?.title}/>
-                    <p>{movie?.overview}</p>
-
-                    <button onClick={onClose}>Close</button>
+                    <div className='bottomModalInfo'>
+                        <img src={`https://image.tmdb.org/t/p/w500${movie?.backdrop_path}`} alt={movie?.title} className='movieImage'/>
+                        <p className='movieOverview'>{movie?.overview}</p>
+                    </div>
+                    <button onClick={onClose} className='closeButton'>Close</button>
                 </div>
                 {showTrailer && trailerUrl && (
                     <div className="trailer-modal">
@@ -56,7 +58,7 @@ const Modal = ({ movie, isOpen, onClose }) => {
                             allowFullScreen
                             title="video"
                         />
-                        <button onClick={() => setShowTrailer(false)}>Close Trailer</button>
+                        <button onClick={() => setShowTrailer(false)} className='closeButton'>Close Trailer</button>
                     </div>
                 )}
             </div>

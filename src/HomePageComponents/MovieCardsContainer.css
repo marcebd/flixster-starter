@@ -1,0 +1,48 @@
+.MovieCardsContainer {
+    margin-top: 2%;
+    width: 100%;
+}
+
+.MovieList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-around;
+    max-height: 1000px; /* Maximum height of the suggestions box */
+    overflow-y: auto; /* Enables vertical scrolling */
+  }
+
+.MovieCard {
+    width: 25%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.SortFilter {
+    display: flex;
+    flex-direction: row;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.SortButton {
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+}
+
+.SortButton select {
+    width: 300px; /* Adjust width as needed */
+    height: 50px; /* Adjust height as needed */
+    font-size: 16px; /* Adjust font size for better readability */
+    padding: 5px 10px; /* Add padding for better visual appeal */
+    cursor: pointer; /* Indicates that this is an interactive element */
+    border: 1px solid #ccc; /* Optional: Adds a border */
+    border-radius: 5px; /* Optional: Rounds the corners */
+    background-color: #fff; /* Optional: Sets a background color */
+}
+
+.SortButton select:hover {
+    background-color: #f8f8f8; /* Optional: Changes background on hover for visual feedback */
+}

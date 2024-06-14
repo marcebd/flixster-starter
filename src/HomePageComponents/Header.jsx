@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import './Header.css'
+import React, { useState} from 'react';
 
 const Header = ({ onSearch }) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -45,16 +46,16 @@ const Header = ({ onSearch }) => {
         onChange={handleInputChange}
         onKeyPress={handleKeyPress}
       />
-      <button onClick={() => handleSearch(searchQuery)}>Search</button>
+      <button onClick={() => handleSearch(searchQuery)} className='searchButton'>Search</button>
       {suggestions.length > 0 && (
         <ul className="suggestions">
           {suggestions.map((movie, index) => (
             <li key={index} onClick={() => {
               setSearchQuery(movie.title);
-              handleSearch(movie.title); // Pass the movie title directly to handleSearch
+              handleSearch(movie.title);
             }}>
-              <img src={`https://image.tmdb.org/t/p/w92${movie.poster_path}`} alt={movie.title} style={{ marginRight: '10px' }} />
-              {movie.title}
+              <img src={`https://image.tmdb.org/t/p/w92${movie.poster_path}`} className='movieSuggestionPoster' />
+              <div className='movieSuggestionTitle'> {movie.title}</div>
             </li>
           ))}
         </ul>

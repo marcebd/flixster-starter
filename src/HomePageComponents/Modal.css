@@ -1,0 +1,137 @@
+.Modal-Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.Modal-Content {
+    display: flex; /* Use flexbox for layout */
+    width: 75%; /* Modal takes up 75% of the screen width */
+    height: auto; /* Adjust height as needed */
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    animation: rotateShadow 5s infinite linear;
+    overflow: hidden; /* Ensures no overflow outside the modal */
+}
+
+@keyframes rotateShadow {
+    0% {
+        box-shadow:
+            0 0 15px rgba(255, 0, 0, 0.7),   /* Red */
+            0 0 30px rgba(255, 165, 0, 0.7), /* Orange */
+            0 0 45px rgba(255, 255, 0, 0.7), /* Yellow */
+            0 0 60px rgba(0, 255, 0, 0.7),   /* Green */
+            0 0 75px rgba(0, 0, 255, 0.7),   /* Blue */
+            0 0 90px rgba(75, 0, 130, 0.7),  /* Indigo */
+            0 0 105px rgba(238, 130, 238, 0.7); /* Violet */
+    }
+    100% {
+        box-shadow:
+            0 0 15px rgba(238, 130, 238, 0.7), /* Violet */
+            0 0 30px rgba(75, 0, 130, 0.7),   /* Indigo */
+            0 0 45px rgba(0, 0, 255, 0.7),    /* Blue */
+            0 0 60px rgba(0, 255, 0, 0.7),    /* Green */
+            0 0 75px rgba(255, 255, 0, 0.7),  /* Yellow */
+            0 0 90px rgba(255, 165, 0, 0.7),  /* Orange */
+            0 0 105px rgba(255, 0, 0, 0.7);   /* Red */
+    }
+}
+
+.Modal-Movie-Poster {
+    flex: 1; /* Takes up 1 part of the flex container */
+    max-width: 40%; /* Maximum width of the poster section */
+    cursor: pointer;
+    position: relative;
+}
+
+.Modal-Movie-Poster img {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    transition: filter 0.3s;
+}
+
+.Modal-Movie-Poster:hover img {
+    filter: brightness(50%);
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 48px;
+    color: rgba(0, 255, 255, 0.7); /* Neon blue color */
+    display: none;
+}
+
+.Modal-Movie-Poster:hover .play-button {
+    display: block;
+}
+
+.Modal-Movie-Info {
+    flex: 1.5; /* Takes up 1.5 parts of the flex container */
+    padding-left: 20px; /* Space between poster and details */
+    overflow-y: auto; /* Allows scrolling if content is too long */
+}
+
+.trailer-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    z-index: 1010;
+    padding: 20px; /* Add padding for spacing */
+}
+
+.trailer-modal iframe {
+    width: 80%;
+    height: 80%;
+    margin-bottom: 20px; /* Space between the iframe and the button */
+}
+
+.trailer-modal button {
+    align-self: center; /* Align the button to the bottom */
+    padding: 10px 20px; /* Padding for the button */
+    cursor: pointer; /* Cursor pointer for better UX */
+}
+
+.bottomModalInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.movieOverview {
+    font-size: 18px; /* Increase the font size as needed */
+    line-height: 1.6; /* Optional: Adjust line height for better readability */
+    color: #000000; /* Optional: Adjust text color for better visibility */
+}
+
+.closeButton {
+    padding: 10px 20px; /* Increase padding for a larger button */
+    font-size: 16px; /* Increase font size for larger text */
+    background-color: #f44336; /* Optional: Add a background color */
+    color: white; /* Optional: Change text color for better visibility */
+    border: none; /* Optional: Remove border */
+    border-radius: 5px; /* Optional: Add rounded corners */
+    cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.closeButton:hover {
+    background-color: #d32f2f; /* Darker shade on hover for visual feedback */
+}

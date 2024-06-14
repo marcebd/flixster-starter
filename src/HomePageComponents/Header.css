@@ -1,0 +1,116 @@
+/* Styles for the header element */
+.Header {
+  background-color: black; /* Sets the background color of the header to black */
+  height: 150px; /* Sets the height of the header */
+  width: 90%; /* Sets the width of the header to 90% of its container */
+  margin-left: 5%; /* Centers the header horizontally within its container */
+  margin-top: 1%; /* Adds a top margin */
+  display: flex; /* Uses flexbox for layout */
+  flex-direction: row; /* Aligns children of the header in a row */
+  justify-content: flex-end; /* Aligns children to the end of the header (right side) */
+  align-items: center; /* Vertically centers the children within the header */
+  position: relative; /* Sets the position context for absolutely positioned children */
+  transition: box-shadow 0.5s ease-in-out; /* Smooth transition for box-shadow changes */
+  animation: rotateShadow 5s infinite linear; /* Applies a continuous shadow rotation animation */
+}
+
+/* Keyframes for the shadow rotation animation */
+@keyframes rotateShadow {
+  0%, 100% {
+      box-shadow: /* Initial and final states of the shadow, creating a rainbow effect */
+          0 0 15px rgba(255, 0, 0, 0.7),   /* Red */
+          0 0 30px rgba(255, 165, 0, 0.7), /* Orange */
+          0 0 45px rgba(255, 255, 0, 0.7), /* Yellow */
+          0 0 60px rgba(0, 255, 0, 0.7),   /* Green */
+          0 0 75px rgba(0, 0, 255, 0.7),   /* Blue */
+          0 0 90px rgba(75, 0, 130, 0.7),  /* Indigo */
+          0 0 105px rgba(238, 130, 238, 0.7); /* Violet */
+  }
+}
+
+/* Hover effect for the header */
+.Header:hover {
+  box-shadow: 0 0 20px 20px rgba(0, 255, 255, 0.75); /* Adds a cyan shadow when hovered */
+}
+
+/* Styles for the header title */
+.headerTitle {
+  color: white; /* Sets text color to white */
+  height: 100%; /* Full height to align with the header */
+  margin-right: 17%; /* Right margin */
+  display: flex; /* Uses flexbox to align text */
+  align-items: center; /* Centers text vertically */
+  font-size: 48px; /* Large font size for visibility */
+}
+
+/* Styles for the search bar */
+.searchBar {
+  width: 20%; /* Width of the search bar */
+  height: 20%; /* Height of the search bar */
+}
+
+/* Styles for the search button */
+.searchButton {
+  margin-right: 5%; /* Right margin */
+  width: 5%; /* Width of the button */
+  height: 25%; /* Height of the button */
+  cursor: pointer; /* Changes the cursor to a pointer to indicate it's clickable */
+  background-color: rgba(0, 255, 255, 0.75); /* Neon green background */
+  color: black; /* Text color */
+  border: none; /* No border */
+  outline: none; /* No outline */
+  transition: background-color 0.3s ease-in-out; /* Smooth transition for background color */
+}
+
+/* Hover effect for the search button */
+.searchButton:hover {
+  background-color: rgba(133, 226, 226, 0.75); /* Darker green on hover */
+}
+
+/* Styles for the suggestions dropdown */
+.suggestions {
+  list-style-type: none; /* Removes bullet points */
+  margin-right: 5%; /* Right margin */
+  padding: 0; /* No padding */
+  background-color: white; /* Background color */
+  position: absolute; /* Positioned absolutely relative to its positioned parent */
+  width: 25%; /* Width of the dropdown */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Shadow for better visibility */
+  z-index: 1000; /* Stack order */
+  top: 100%; /* Positioned right below the element */
+  max-height: 500px; /* Maximum height */
+  overflow-y: auto; /* Enables vertical scrolling */
+}
+
+/* Styles for each item in the suggestions dropdown */
+.suggestions li {
+  padding: 10px; /* Padding */
+  border-bottom:     1px dotted #ccc; /* Dotted border between items */
+  display: flex; /* Uses flexbox to align children elements */
+  flex-direction: row; /* Aligns children in a row */
+}
+
+/* Removes the border from the last item in the suggestions list */
+.suggestions li:last-child {
+  border-bottom: none;
+}
+
+/* Styles for hovering over items in the suggestions list */
+.suggestions li:hover {
+  background-color: #f8f8f8; /* Light grey background on hover */
+}
+
+/* Styles for the movie poster images in the suggestions list */
+.movieSuggestionPoster {
+  width: 20%; /* Sets the width relative to its container */
+  height: auto; /* Maintains the aspect ratio of the image */
+  margin-left: 10%; /* Left margin */
+  vertical-align: middle; /* Aligns the image vertically in the middle */
+}
+
+/* Styles for the movie title text in the suggestions list */
+.movieSuggestionTitle {
+  vertical-align: middle; /* Aligns the text vertically in the middle */
+  font-size: 20px; /* Font size of the movie title */
+  margin-left: 10%; /* Left margin */
+}
