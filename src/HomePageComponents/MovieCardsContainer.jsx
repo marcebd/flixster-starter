@@ -30,11 +30,25 @@ const MovieCardsContainer = ({ searchQuery }) => {
   };
 
   const updateDisplayMovies = useCallback((movies) => {
-    console.log(movies) //might not have to use callback here make it a normal arrow function
+    console.log("Current filter settings:", filterSettings);
+
+    // Check if all genre filters are false or if the genres object is empty
+    const areAllGenresFalse = Object.keys(filterSettings.genres).length === 0 ||
+                              Object.values(filterSettings.genres).every(value => !value);
+
+    if (areAllGenresFalse && !filterSettings.favorited && !filterSettings.watched) {
+      console.log("No filters applied. Displaying all movies.");
+      setDisplayMovies(movies.slice(0, currentPage * itemsPerPage));
+      return; // Exit the function early since no filtering is needed
+    }
+
+    // Continue with existing filtering logic if filters are applied
     let filteredMovies = movies.filter(movie => {
       const matchesFavorited = !filterSettings.favorited || favorites.has(movie.id);
       const matchesWatched = !filterSettings.watched || watched.has(movie.id);
-      const matchesGenres = Object.keys(filterSettings.genres).length === 0 || movie.genre_ids.some(id => filterSettings.genres[id]);
+      console.log(`Movie ID: ${movie.id}, Favorited: ${matchesFavorited}, Watched: ${matchesWatched}`);
+      const matchesGenres = Object.keys(filterSettings.genres).length === 0 ||
+                            movie.genre_ids.some(id => filterSettings.genres[id]);
       return matchesFavorited && matchesWatched && matchesGenres;
     });
     console.log("Filtered movies after applying filters:", filteredMovies);
