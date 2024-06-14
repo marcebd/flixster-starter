@@ -10,9 +10,14 @@ const MovieCardsContainer = ({ searchQuery }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [favorites, setFavorites] = useState(new Set());
   const [watched, setWatched] = useState(new Set());
-  const [filterSettings, setFilterSettings] = useState({ favorited: false, watched: false });
+  const [filterSettings, setFilterSettings] = useState({
+    favorited: false,
+    watched: false,
+    genres: {}
+  });
   const [sortOption, setSortOption] = useState('');
   const itemsPerPage = 20;
+
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = (movie) => {
@@ -25,10 +30,13 @@ const MovieCardsContainer = ({ searchQuery }) => {
   };
 
   const updateDisplayMovies = useCallback((movies) => {
-    let filteredMovies = movies.filter(movie =>
-        (!filterSettings.favorited || favorites.has(movie.id)) &&
-        (!filterSettings.watched || watched.has(movie.id))
-    );
+    console.log(movies) //might not have to use callback here make it a normal arrow function
+    let filteredMovies = movies.filter(movie => {
+      const matchesFavorited = !filterSettings.favorited || favorites.has(movie.id);
+      const matchesWatched = !filterSettings.watched || watched.has(movie.id);
+      const matchesGenres = Object.keys(filterSettings.genres).length === 0 || movie.genre_ids.some(id => filterSettings.genres[id]);
+      return matchesFavorited && matchesWatched && matchesGenres;
+    });
     console.log("Filtered movies after applying filters:", filteredMovies);
     setDisplayMovies(filteredMovies.slice(0, currentPage * itemsPerPage));
   }, [favorites, watched, filterSettings, currentPage]);
@@ -69,7 +77,6 @@ const MovieCardsContainer = ({ searchQuery }) => {
         } else {
             setAllMovies(data.results);
         }
-        updateDisplayMovies(data.results);
     } catch (error) {
         console.error("Failed to fetch movies:", error);
     }
@@ -77,7 +84,7 @@ const MovieCardsContainer = ({ searchQuery }) => {
 
   const handleFilterChange = useCallback((settings) => {
     console.log("Filter settings updated to:", settings);
-    setFilterSettings(settings);
+    setFilterSettings(prev => ({ ...prev, ...settings }));
   }, []);
 
   const toggleSet = useCallback((setId, movieId) => {
@@ -94,7 +101,9 @@ const MovieCardsContainer = ({ searchQuery }) => {
     updateDisplayMovies(allMovies);
   }, [allMovies, updateDisplayMovies]);
 
-  const handleLoadMore = useCallback(() => {
+  const handleLoadMore = useCallback((event) => {
+    event.preventDefault(); // Prevent default form submission behavior
+    event.stopPropagation(); // Stop the event from bubbling up
     const nextPage = currentPage + 1;
     setCurrentPage(nextPage);
     fetchMovies(nextPage);
@@ -122,7 +131,7 @@ const MovieCardsContainer = ({ searchQuery }) => {
           />
         ))}
       </div>
-      <button onClick={handleLoadMore}>Load More</button>
+      <button type="button" onClick={handleLoadMore}>Load More</button>
       <Modal movie={selectedMovie} isOpen={isModalOpen} onClose={closeModal} />
     </div>
   );
