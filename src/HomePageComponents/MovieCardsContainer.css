@@ -1,48 +1,60 @@
+/* Style for the container that holds all movie cards */
 .MovieCardsContainer {
-    margin-top: 2%;
-    width: 100%;
+    margin-top: 2%; /* Top margin to create space from the previous content */
+    width: 100%; /* Full width of the parent container */
 }
 
+/* Style for the list that displays movie cards */
 .MovieList {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: space-around;
-    max-height: 1000px; /* Maximum height of the suggestions box */
-    overflow-y: auto; /* Enables vertical scrolling */
-  }
+    display: flex; /* Use flexbox for layout */
+    flex-direction: row; /* Arrange items in a row */
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    width: 100%; /* Full width of the parent container */
+    justify-content: space-around; /* Distribute space around items */
+    max-height: 1000px; /* Maximum height of the container */
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds max-height */
+}
 
+/* Style for individual movie cards within the list */
 .MovieCard {
-    width: 25%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
+    width: 25%; /* Each card takes up 25% of the list's width */
+    height: auto; /* Height adjusts based on content */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Arrange content vertically */
 }
 
+/* Style for the container that holds sorting and filtering controls */
 .SortFilter {
-    display: flex;
-    flex-direction: row;
-    margin-left: 5%;
-    margin-right: 5%;
+    display: flex; /* Use flexbox for layout */
+    flex-direction: row; /* Arrange items in a row */
+    margin-left: 5%; /* Left margin */
+    margin-right: 5%; /* Right margin */
 }
 
+/* Style for the sort button container */
 .SortButton {
-    justify-content: center; /* Centers horizontally */
-    align-items: center; /* Centers vertically */
+    justify-content: center; /* Center items horizontally within the container */
+    align-items: center; /* Center items vertically within the container */
 }
 
+/* Style for the select element within the sort button container */
 .SortButton select {
-    width: 300px; /* Adjust width as needed */
-    height: 50px; /* Adjust height as needed */
-    font-size: 16px; /* Adjust font size for better readability */
-    padding: 5px 10px; /* Add padding for better visual appeal */
-    cursor: pointer; /* Indicates that this is an interactive element */
-    border: 1px solid #ccc; /* Optional: Adds a border */
-    border-radius: 5px; /* Optional: Rounds the corners */
-    background-color: #fff; /* Optional: Sets a background color */
+    width: 300px; /* Fixed width */
+    height: 50px; /* Fixed height */
+    font-size: 16px; /* Font size for readability */
+    padding: 5px 10px; /* Padding inside the select box */
+    cursor: pointer; /* Indicates the element is clickable */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #fff; /* White background color */
 }
 
+/* Hover effect for the select element */
 .SortButton select:hover {
-    background-color: #f8f8f8; /* Optional: Changes background on hover for visual feedback */
+    background-color: #f8f8f8; /* Light gray background on hover for visual feedback */
+}
+
+/* Style for the main container that might hold the movie list and other elements */
+main {
+    display: flex; /* Use flexbox for layout */
 }

@@ -1,87 +1,93 @@
+/* Style for the movie card container */
 .MovieCard {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    overflow: hidden;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Hide overflow content */
     box-shadow: 0 0 10px rgba(0, 255, 255, 0.6); /* Neon blue shadow */
-    margin: 20px;
-    width: 350px; /* Adjust width as needed */
+    margin: 20px; /* Space around the card */
+    width: 350px; /* Fixed width */
     transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transition for shadow and scale */
-    cursor: pointer; /* Change cursor on hover */
+    cursor: pointer; /* Change cursor on hover to indicate interactivity */
 }
 
+/* Style for the movie card overview section */
 .movieCardOverview {
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    justify-content: space-evenly;
+    display: flex; /* Use flexbox for layout */
+    flex-direction: row; /* Arrange items in a row */
+    align-content: center; /* Align content vertically in the center */
+    justify-content: space-evenly; /* Distribute space evenly between items */
 }
 
+/* Hover effect for the movie card */
 .MovieCard:hover {
     box-shadow: 0 0 20px rgba(0, 255, 255, 0.8); /* Larger neon blue shadow on hover */
     transform: scale(1.05); /* Slightly increase size on hover */
 }
 
+/* Style for the header section of the movie card */
 .MovieCard__header {
-    display: block; /* Change from flex to block to stack elements vertically */
-    text-align: center; /* Center-align the content */
+    display: block; /* Use block layout */
+    text-align: center; /* Center-align the text */
 }
 
+/* Style for the movie poster image */
 .movieCardPoster {
-    width: 100%; /* Make the poster full width */
-    height: auto;
+    width: 100%; /* Full width of the container */
+    height: auto; /* Maintain aspect ratio */
     border-radius: 4px 4px 0 0; /* Round only the top corners */
 }
 
+/* Style for the movie title */
 .Movie-Title {
-    font-size: 20px; /* Increased font size */
-    color: #333;
-    margin: 10px 0; /* Add vertical margin */
+    font-size: 20px; /* Larger font size for visibility */
+    color: #333; /* Dark gray color for text */
+    margin: 10px 0; /* Vertical margin */
 }
 
+/* Common style for favorite heart, watched label, and rating */
 .movieCardFavoriteHeart, .movieCardWatchedLabel, .movieCardRating {
-    display: block; /* Make each element a block to stack vertically */
+    display: block; /* Stack elements vertically */
     text-align: center; /* Center-align the text */
-    margin: 5px 0; /* Add some vertical spacing */
+    margin: 5px 0; /* Vertical spacing */
 }
 
+/* Style for the favorite heart icon */
 .movieCardFavoriteHeart {
-    cursor: pointer;
-    font-size: 24px;
+    cursor: pointer; /* Indicate clickable item */
+    font-size: 24px; /* Larger icon size */
 }
 
+/* Style for the watched label */
 .movieCardWatchedLabel {
-    cursor: pointer;
-    width: 100px;
-    height: 50px;
-    display: flex;
-    align-items: center
+    cursor: pointer; /* Indicate clickable item */
+    width: 100px; /* Fixed width */
+    height: 50px; /* Fixed height */
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center align items vertically */
 }
 
+/* Style for the rating display */
 .rating {
-    display: flex;
-    align-items: center
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center align items vertically */
 }
 
+/* Style for the movie card rating text */
 .movieCardRating {
-    color: #666;
-    font-size: 16px;
-    display: inline-block;
+    color: #666; /* Medium gray color */
+    font-size: 16px; /* Font size */
+    display: inline-block; /* Inline block layout */
 }
 
+/* Style for the watched button (checkbox) */
 .movieCardWatchedButton {
-    transform: scale(1.5); /* Scale up the size of the checkbox */
-    cursor: pointer; /* Change the cursor to pointer to indicate it's clickable */
-    margin-right: 10px; /* Maintain some space between the checkbox and the label text */
+    transform: scale(1.5); /* Enlarge the checkbox */
+    cursor: pointer; /* Indicate clickable item */
+    margin-right: 10px; /* Space between checkbox and label text */
 }
 
+/* Additional style for the watched label */
 .movieCardWatchedLabel {
-    display: flex;
-    align-items: center; /* Center align the checkbox with the label text */
-    cursor: pointer;
-}
-
-/* Optional: Adjust the font size and padding of the label for better alignment and visibility */
-.movieCardWatchedLabel {
-    font-size: 18px; /* Increase font size if needed */
-    padding: 10px; /* Add padding for better spacing */
+    font-size: 18px; /* Increase font size for better readability */
+    padding: 10px; /* Padding for better spacing */
 }

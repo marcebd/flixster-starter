@@ -1,24 +1,40 @@
-import './Modal.css'
+// Import the CSS styles specific to the Modal component
+import './Modal.css';
+
+// Import React, useEffect, and useState hooks from the React library
 import React, { useEffect, useState } from 'react';
+
+// Import the function to get genre names based on genre IDs
 import { getGenreNames } from './GetGenredNames';
 
+// Define the Modal component with destructured props
 const Modal = ({ movie, isOpen, onClose }) => {
+    // State to store the trailer URL
     const [trailerUrl, setTrailerUrl] = useState('');
-    const [runtime, setRuntime] = useState('');
-    const [showTrailer, setShowTrailer] = useState(false); // State to control trailer modal visibility
 
+    // State to store the runtime of the movie
+    const [runtime, setRuntime] = useState('');
+
+    // State to control trailer modal visibility
+    const [showTrailer, setShowTrailer] = useState(false);
+
+    // useEffect hook to fetch movie details when the modal is opened or the movie changes
     useEffect(() => {
         const fetchMovieDetails = async () => {
+            // Return early if no movie is selected or modal is not open
             if (!movie || !isOpen) return;
 
+            // API key and URL construction for fetching movie details
             const apiKey = import.meta.env.VITE_API_KEY;
             const url = `https://api.themoviedb.org/3/movie/${movie.id}?api_key=${apiKey}&append_to_response=videos`;
 
             try {
+                // Fetch movie details from the API
                 const response = await fetch(url);
                 const data = await response.json();
-                setRuntime(data.runtime);
+                setRuntime(data.runtime); // Set the runtime from the fetched data
 
+                // Find a trailer video among the fetched videos
                 const trailer = data.videos.results.find(video => video.type === 'Trailer');
                 setTrailerUrl(trailer ? `https://www.youtube.com/embed/${trailer.key}` : '');
             } catch (error) {
@@ -27,11 +43,15 @@ const Modal = ({ movie, isOpen, onClose }) => {
         };
 
         fetchMovieDetails();
-    }, [movie, isOpen]);
+    }, [movie, isOpen]); // Dependencies for the useEffect hook
 
+    // Return null to not render anything if the modal is not open
     if (!isOpen) return null;
+
+    // Get genre names using the genre IDs from the movie data
     const genreNames = getGenreNames(movie?.genre_ids);
 
+    // Render the Modal component
     return (
         <div className="Modal-Overlay">
             <div className="Modal-Content">
@@ -66,4 +86,5 @@ const Modal = ({ movie, isOpen, onClose }) => {
     );
 };
 
+// Export the Modal component as the default export of this module
 export default Modal;
