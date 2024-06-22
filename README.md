@@ -14,17 +14,17 @@ Deployed Application (optional):
 
 
 - [x] **Display Movies**
-  - [x] Users can view a list of current movies from The Movie Database API.
-  - [x] For each movie displayed, users can see its title, poster image, and votes.
-  - [x] Users can load more current movies by clicking a button at the bottom of the list (page should not be reloaded).
-- [x] **Search Functionality**
-  - [x] Users can search for movies and view the results in a grid.
-  - [x] Users can clear results and view previous current movies displayed.
-- [x] **Accessibility Features**
-  - [x] Website implements accessibility features (semantic HTML, color contrast, font sizing, alt text for images).
-- [x] **Responsive Design**
-  - [x] Website implements responsive web design.
-- [x] **Movie Details**
+  - [X] Users can view a list of current movies from The Movie Database API.
+  - [X] For each movie displayed, users can see its title, poster image, and votes.
+  - [X] Users can load more current movies by clicking a button at the bottom of the list (page should not be reloaded).
+- [X] **Search Functionality**
+  - [X] Users can search for movies and view the results in a grid.
+  - [X] Users can clear results and view previous current movies displayed.
+- [X] **Accessibility Features**
+  - [X] Website implements accessibility features (semantic HTML, color contrast, font sizing, alt tet for images).
+- [X] **Responsive Design**
+  - [X] Website implements responsive web design.
+- [X] **Movie Details**
   - [x] Users can view more details about a movie in a popup, such as runtime in minutes, backdrop poster, release date, genres, and/or an overview.
 - [x] **Sorting Options**
   - [x] Users can click on a filter by drop down to sort product by type (alphabetic, release date, rating).
@@ -35,19 +35,19 @@ Deployed Application (optional):
 
 - [ ] **Deployment**
   - [ ] Website is deployed via Render.
-- [x] **Embedded Movie Trailers**
-  - [x] Within the popup displaying a movie's details, users can play the movie trailer.
-- [x] **Watched Checkbox**
-  - [x] For each movie displayed, users can mark the movie as watched.
-- [x] **Favorite Button**
-  - [x] For each movie displayed, users can favorite the movie.
+- [] **Embedded Movie Trailers**
+  - [] Within the popup displaying a movie's details, users can play the movie trailer.
+- [X] **Watched Checkbo**
+  - [X] For each movie displayed, users can mark the movie as watched.
+- [X] **Favorite Button**
+  - [X] For each movie displayed, users can favorite the movie.
 - [ ] **Sidebar**
   - [ ] Users can open a sidebar
   - [ ] The sidebar displays the user's favorited and watched movies
 
 ### Walkthrough Video
 
-[![Flixster - 14 June 2024 - Watch Video](https://cdn.loom.com/sessions/thumbnails/51bb7a63075049e9b93b61852d6cc2a5-with-play.gif)](https://www.loom.com/share/51bb7a63075049e9b93b61852d6cc2a5)
+[![Video](https://cdn.loom.com/sessions/thumbnails/c8c341fad72448e485cb574c5bb36d3e-with-play.gif)](https://www.loom.com/embed/c8c341fad72448e485cb574c5bb36d3e)
 
 ### Reflection
 

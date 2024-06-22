@@ -10,6 +10,8 @@ const Footer = () => {
     // A div element with a class of 'footer' that will apply styles defined in Footer.css
     <div className='footer'>
       <h1 className='footerText'>Created by Marcela Billingslea</h1>
+      <h2 className='footerText'>Meta U Intern 2024</h2>
+      <h2 className='footerText'>marcebd@fakeemail.com</h2>
     </div>
   );
 }
